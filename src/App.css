@@ -1,33 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700');
+
+body{
+  font-family: 'Catamaran', sans-serif;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  -ms-user-select: none;
+}
+
+.application{
+  width: 100%;
+  height: 100%;
+}
+
+a.underline-none:active,
+a.underline-none:visited,
+a.underline-none:focus,
+a.underline-none:link{
+  text-decoration: none;
+}
+
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.display-flex{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+.field-wrapper{
+  width: 100%;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 25px 35px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
-.App-link {
-  color: #61dafb;
+.fields{
+  width: 360px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.fields > input{
+  width: 100%;
+  font-size: 25px;
+  line-height: 35px;
+  margin-top: 8px;
+  padding: 0 10px;
+}
+
+.fields > button{
+  width: 100%;
+  height: 35px;
+  margin-top: 8px;
+}
+
+.reject-message{
+  width: 100%;
+
 }
