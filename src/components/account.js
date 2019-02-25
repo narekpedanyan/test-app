@@ -1,22 +1,31 @@
-import {logOut} from '../store/action-creators';
+import {logOut, guestLogOut, setUser, enterGuest} from '../store/action-creators';
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 
 class Account extends Component{
     logout = () => {
-        console.log('Logout');
         let loaclSt = localStorage.getItem('access');
-        console.log(loaclSt, 'loaclSt');
+        let guestAccess = localStorage.getItem('guestAccess');
         localStorage.removeItem('access');
+        localStorage.removeItem('guestAccess');
         loaclSt = localStorage.getItem('access');
-        console.log(loaclSt, 'loaclSt pti jnjvac @lni')
-        this.props.dispatch(logOut());
+        guestAccess = localStorage.getItem('guestAccess');
+        if(loaclSt === null){
+            this.props.dispatch(logOut());
+        }
+        if(guestAccess === null){
+            this.props.dispatch(guestLogOut());
+            this.props.dispatch(setUser({}));
+            this.props.dispatch(enterGuest(false));
+        }
     };
     render(){
+        const {user, isLoggedIn} = this.props.authData;
         return(
             <div className='display-flex account-wrapper'>
                 <div className='info'>
-                    <p>Admin</p>
+                    {!!user && <div>{user['userName']}</div>}
+                    {isLoggedIn && <p>Admin</p>}
                 </div>
                 <div className='controls display-flex'>
                     <button onClick={() => this.logout()}>LogOut</button>
@@ -27,9 +36,9 @@ class Account extends Component{
 }
 
 function mapStateToProps (state) {
-    const appData = state.authData;
+    const authData = state.authData;
     return {
-        appData
+        authData
     }
 }
 

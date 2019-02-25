@@ -1,5 +1,5 @@
+import {logIn, guestLogIn, setUser} from '../store/action-creators';
 import React, {Component, Fragment} from 'react';
-import {logIn} from '../store/action-creators';
 import Account from '../components/account';
 import Tasks from '../components/tasks';
 import Login from '../components/login';
@@ -17,8 +17,18 @@ class MiddleWare extends Component{
 
     checkStorage(){
         let loaclSt = localStorage.getItem('access');
+        let guestAccess = localStorage.getItem('guestAccess');
+        let user = localStorage.getItem('userName');
+        let userEmail = localStorage.getItem('userEmail');
         if(loaclSt === 'Enabled'){
             this.props.dispatch(logIn());
+        }
+        if(guestAccess === 'Enabled') {
+            this.props.dispatch(guestLogIn());
+            this.props.dispatch(setUser({
+                userName: user,
+                email: userEmail
+            }))
         }
     }
 
@@ -28,8 +38,15 @@ class MiddleWare extends Component{
         const guestMode = authData['guest'];
         return(
             <Fragment>
-                {isLoggedIn && <Account />}
-                {!isLoggedIn && <Login />}
+                {isLoggedIn && <Account
+                    isLoggedIn={true}
+                    guest={false}
+                />}
+                {guestMode && <Account
+                    isLoggedIn={false}
+                    guest={true}
+                />}
+                {(!isLoggedIn && !guestMode) && <Login />}
                 {isLoggedIn && <Tasks
                     isLoggedIn={true}
                     guestMode={false}

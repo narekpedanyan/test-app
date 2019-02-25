@@ -61,6 +61,8 @@ a.underline-none:link{
 
 .reject-message{
   width: 100%;
+  margin-top: 8px;
+  color: rgb(250,0,0);
 }
 
 .account-wrapper{
@@ -81,4 +83,17 @@ a.underline-none:link{
 .task-wrapper{
   padding: 25px 35px;
   flex-direction: column;
+  background: rgba(0,0,0,0.5);
+}
+
+.tasks-header{
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+}
+
+.add-post {
+  margin-left: auto;
+  font-size: 20px;
+  cursor: pointer;
 }

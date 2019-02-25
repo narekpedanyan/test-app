@@ -1,4 +1,5 @@
-import {logIn} from '../store/action-creators';
+import {logIn, enterGuest} from '../store/action-creators';
+import GuestField from '../components/guest';
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 
@@ -26,28 +27,36 @@ class Login extends Component{
                 this.props.dispatch(logIn());
             }
         }else{
-            console.log('ste')
+            this.setState({
+                loginRejected: true
+            });
+            setTimeout(() => {
+                this.setState({
+                    loginRejected: false
+                })
+            },1000);
         }
     };
 
-    readCookie = () => {
-        let loaclSt = localStorage.getItem('access');
-        console.log(loaclSt, 'loaclSt')
+    enterAsGuest = () => {
+        this.props.dispatch(enterGuest(true));
     };
 
 
 
     render(){
+        const {guestStage} = this.props.authData;
         return(
             <div className='field-wrapper display-flex'>
                 <div className='fields'>
-                    <input type='text' placeholder='Enter login...' onChange={(event) => this.setState({ login: event.target.value })}/>
-                    <input type='password' onChange={(event) => this.setState({ password: event.target.value })}/>
+                    <input type='text' placeholder='login...' onChange={(event) => this.setState({ login: event.target.value })}/>
+                    <input type='password' placeholder='password' onChange={(event) => this.setState({ password: event.target.value })}/>
                     <button className='sign-in' onClick={() => this.showEmail()}>Log In</button>
                     {this.state.loginRejected && (
                         <div className='reject-message'>Login In unseccessfully</div>
                     )}
-                    <button onClick={() => this.readCookie()}>Read Cookie</button>
+                    {!guestStage && <button onClick={() => this.enterAsGuest()}>Enter as Guest</button>}
+                    {guestStage && <GuestField />}
                 </div>
             </div>
         )
