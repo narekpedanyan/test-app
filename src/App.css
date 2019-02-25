@@ -20,11 +20,6 @@ a.underline-none:link{
   text-decoration: none;
 }
 
-
-.App {
-  text-align: center;
-}
-
 *{
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -66,5 +61,24 @@ a.underline-none:link{
 
 .reject-message{
   width: 100%;
+}
 
+.account-wrapper{
+  width: 100%;
+  flex-direction: row;
+  padding: 25px 35px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.info{
+  flex: 1;
+}
+
+.controls{
+  align-items: center;
+}
+
+.task-wrapper{
+  padding: 25px 35px;
+  flex-direction: column;
 }

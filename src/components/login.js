@@ -1,4 +1,6 @@
+import {logIn} from '../store/action-creators';
 import React, {Component} from 'react';
+import {connect} from "react-redux";
 
 class Login extends Component{
     state = {
@@ -19,6 +21,10 @@ class Login extends Component{
         if(this.state.login === 'admin' && this.state.password === '123'){
             window.localStorage.setItem('access', "Enabled");
             window.localStorage.setItem('token', token);
+            let loaclSt = localStorage.getItem('access');
+            if(loaclSt === 'Enabled'){
+                this.props.dispatch(logIn());
+            }
         }else{
             console.log('ste')
         }
@@ -48,4 +54,11 @@ class Login extends Component{
     }
 }
 
-export default Login;
+function mapStateToProps (state) {
+    const authData = state.authData;
+    return {
+        authData
+    }
+}
+
+export default connect(mapStateToProps)(Login);

@@ -1,8 +1,11 @@
-import {LOGIN_SUCCESS} from '../action-types';
+import {LOGIN_SUCCESS, LOGOUT_SUCCESS} from '../action-types';
 
 const initialState = {
+    user: {
+        userName: null
+    },
     isLoggedIn: false,
-    user: {}
+    guest: false
 };
 
 const authData = (state = {...initialState}, action) => {
@@ -10,7 +13,12 @@ const authData = (state = {...initialState}, action) => {
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                isLoggedIn: action.payload
+                isLoggedIn: true
+            };
+        case LOGOUT_SUCCESS:
+            return {
+                ...state,
+                isLoggedIn: false
             };
         default:
             return state;
