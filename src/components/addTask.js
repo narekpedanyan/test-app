@@ -57,7 +57,7 @@ class AddTask extends Component {
                 <div className='add-task-popup'>
                     <span className='close-p-p' onClick={() => this.closePopUp()}>x</span>
                     <textarea className='textarea'
-                              onChange={(event) => this.setState({taskText: event.target.value})}>Add Task here</textarea>
+                              onChange={(event) => this.setState({taskText: event.target.value})} placeholder="Add task..."/>
                     {this.state.createdSuccessFully && <div className='success'>Created Successfully</div>}
                     <button onClick={() => this.addTask()}>submit</button>
                 </div>
