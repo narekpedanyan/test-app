@@ -1,99 +1,198 @@
 @import url('https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700');
 
-body{
-  font-family: 'Catamaran', sans-serif;
-  width: 100%;
-  height: 100%;
-  line-height: 1;
-  -ms-user-select: none;
+body {
+    font-family: 'Catamaran', sans-serif;
+    width: 100%;
+    height: 100%;
+    line-height: 1;
+    -ms-user-select: none;
 }
 
-.application{
-  width: 100%;
-  height: 100%;
+.application {
+    width: 100%;
+    height: 100%;
 }
 
 a.underline-none:active,
 a.underline-none:visited,
 a.underline-none:focus,
-a.underline-none:link{
-  text-decoration: none;
+a.underline-none:link {
+    text-decoration: none;
 }
 
-*{
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-.display-flex{
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
+.display-flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
 }
 
-.field-wrapper{
-  width: 100%;
-  justify-content: center;
-  padding: 25px 35px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+.field-wrapper {
+    width: 100%;
+    justify-content: center;
+    padding: 25px 35px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.fields{
-  width: 360px;
+.fields {
+    width: 360px;
 }
 
-.fields > input{
-  width: 100%;
-  font-size: 25px;
-  line-height: 35px;
-  margin-top: 8px;
-  padding: 0 10px;
+.fields > input {
+    width: 100%;
+    font-size: 25px;
+    line-height: 35px;
+    margin-top: 8px;
+    padding: 0 10px;
 }
 
-.fields > button{
-  width: 100%;
-  height: 35px;
-  margin-top: 8px;
+.fields > button {
+    width: 100%;
+    height: 35px;
+    margin-top: 8px;
 }
 
-.reject-message{
-  width: 100%;
-  margin-top: 8px;
-  color: rgb(250,0,0);
+.reject-message {
+    width: 100%;
+    margin-top: 8px;
+    color: rgb(250, 0, 0);
 }
 
-.account-wrapper{
-  width: 100%;
-  flex-direction: row;
-  padding: 25px 35px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+.account-wrapper {
+    width: 100%;
+    flex-direction: row;
+    padding: 25px 35px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.info{
-  flex: 1;
+.info {
+    flex: 1;
 }
 
-.controls{
-  align-items: center;
+.controls {
+    align-items: center;
 }
 
-.task-wrapper{
-  padding: 25px 35px;
-  flex-direction: column;
-  background: rgba(0,0,0,0.5);
+.task-wrapper {
+    padding: 25px 35px;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.5);
 }
 
-.tasks-header{
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
+.tasks-header {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
 }
 
 .add-post {
-  margin-left: auto;
-  font-size: 20px;
-  cursor: pointer;
+    margin-left: auto;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.popup-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.add-task-popup {
+    width: 500px;
+    background: #fff;
+    box-shadow: 0 0 15px black;
+    position: relative;
+    padding: 0 15px 15px;
+}
+
+.close-p-p {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 25px;
+    text-align: center;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    cursor: pointer;
+}
+
+.textarea {
+    width: 100%;
+    height: 200px;
+    margin-top: 45px;
+}
+
+/*Loader*/
+
+.loader {
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border: 3px solid #ddd;
+    border-top: 3px solid #42a5f5;
+    border-radius: 50%;
+    margin: auto;
+    height: 75px;
+    width: 75px;
+}
+
+@-webkit-keyframes spin {
+    to {
+        border-top-color: #ec407a;
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    to {
+        border-top-color: #ec407a;
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/*Laoder Ends*/
+
+.tasks {
+    width: 100%;
+}
+
+.task-row {
+    width: 100%;
+    background: #fff;
+    margin-top: 10px;
+    padding: 15px;
+}
+
+.success {
+    width: 100%;
+    color: rgb(0, 250, 0);
+    line-height: 35px;
+}
+
+.pagination {
+    height: 30px;
+    color: cornflowerblue;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.pagination > span {
+    cursor: pointer;
 }

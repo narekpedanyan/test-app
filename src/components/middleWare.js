@@ -1,7 +1,7 @@
 import {logIn, guestLogIn, setUser} from '../store/action-creators';
+import TasksContainer from '../containers/tasks-container';
 import React, {Component, Fragment} from 'react';
 import Account from '../components/account';
-import Tasks from '../components/tasks';
 import Login from '../components/login';
 import {connect} from "react-redux";
 
@@ -47,11 +47,11 @@ class MiddleWare extends Component{
                     guest={true}
                 />}
                 {(!isLoggedIn && !guestMode) && <Login />}
-                {isLoggedIn && <Tasks
+                {isLoggedIn && <TasksContainer
                     isLoggedIn={true}
                     guestMode={false}
                 />}
-                {guestMode && <Tasks
+                {guestMode && <TasksContainer
                     isLoggedIn={false}
                     guestMode={true}
                 />}

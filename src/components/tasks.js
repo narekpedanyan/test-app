@@ -1,51 +1,40 @@
 import React, {Component} from 'react';
+import RequestService from '../service';
+import {connect} from "react-redux";
 
 class Tasks extends Component {
-    constructor(props){
-        super(props);
-        this.fetchData = this.fetchData.bind(this);
-    }
-    componentDidMount() {
-        this.fetchData();
-    }
+    componentDidMount = () => {
+        const {pageNumber, sortField, sortDirection} = this.props;
+        RequestService.fetchGuestData(pageNumber, sortField, sortDirection);
+    };
 
-    fetchData() {
-        // let data = {
-        //     sort_field: 'id',
-        //     sort_direction: 'asc',
-        //     page: 2
-        // };
-        // const requestOptions = {
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-        //         // 'Authorization': "Bearer " + userToken
-        //     },
-        //     head: JSON.stringify(data)
-        // };
-        // const reqUri = 'https://uxcandy.com/~shapoval/test-task-backend/?developer=admin&sort_field =1&sort_direction =desc&page =1';
-        // const reqInstance = new Request(reqUri, requestOptions);
-        // return fetch(reqInstance)
-        //     .then(response => {
-        //         if (response.ok) {
-        //             return response.json();
-        //         }
-        //     })
-        //     .then(data => {
-        //         console.log(data, 'tesnes incha')
-        //         return data;
-        //     }).catch((err) => console.log(err, "error111"))
-    }
+    componentDidUpdate = (prevProps) => {
+        const {pageNumber, sortField, sortDirection} = this.props;
+        if (pageNumber !== prevProps.pageNumber) {
+            RequestService.fetchGuestData(pageNumber, sortField, sortDirection);
+        }
+        if (sortDirection !== prevProps.sortDirection) {
+            RequestService.fetchGuestData(pageNumber, sortField, sortDirection);
+        }
+    };
 
     render() {
-        const {isLoggedIn, guestMode} = this.props;
-        return (<div className='display-flex task-wrapper'>
-            <div className='display-flex tasks-header'>
-               <div>Tasks</div>
-               <button className='add-post'>+</button>
-            </div>
+        const {tasksInfo} = this.props.tasksData;
+
+        return (<div className='tasks'>
+            {tasksInfo && tasksInfo.tasks.map((item, index) => (<div className='task-row' key={index}>
+                {item.text}
+            </div>))}
         </div>)
     }
 }
 
-export default Tasks;
+function mapStateToProps(state) {
+    const tasksData = state.tasksData;
+    return {
+        tasksData
+    }
+}
+
+
+export default connect(mapStateToProps)(Tasks);

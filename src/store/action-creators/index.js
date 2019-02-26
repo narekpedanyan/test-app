@@ -1,4 +1,13 @@
-import {GUEST_ENTER_NAME, LOGIN_SUCCESS, LOGOUT_SUCCESS, GUEST_SUCCESS, GUEST_LOGOUT, SET_USER} from '../action-types';
+import {
+    GUEST_ENTER_NAME,
+    LOGIN_SUCCESS,
+    LOGOUT_SUCCESS,
+    GUEST_SUCCESS,
+    GUEST_LOGOUT,
+    SET_USER,
+    TOGGLE_POPUP,
+    UPDATE_TASKS
+} from '../action-types';
 
 export const logIn = () => ({
     type: LOGIN_SUCCESS
@@ -25,3 +34,13 @@ export const setUser = (payload) => ({
     type: SET_USER,
     payload
 });
+
+export const togglePopUp = (payload) => ({
+    type: TOGGLE_POPUP,
+    payload
+});
+
+export const updateTasks = (payload) => ({
+    type: UPDATE_TASKS,
+    payload
+})

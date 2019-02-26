@@ -3,7 +3,9 @@ import React, {Component} from 'react';
 class Laoder extends Component{
     render(){
         return(
-            <div>Loading</div>
+            <div className="container">
+                <div className="loader"></div>
+            </div>
         )
     }
 }
