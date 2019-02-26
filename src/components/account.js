@@ -35,11 +35,11 @@ class Account extends Component{
     }
 }
 
-function mapStateToProps (state) {
+const mapStateToProps = (state) => {
     const authData = state.authData;
     return {
         authData
     }
-}
+};
 
 export default connect(mapStateToProps)(Account);

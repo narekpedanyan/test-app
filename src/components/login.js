@@ -42,8 +42,6 @@ class Login extends Component{
         this.props.dispatch(enterGuest(true));
     };
 
-
-
     render(){
         const {guestStage} = this.props.authData;
         return(
@@ -63,11 +61,11 @@ class Login extends Component{
     }
 }
 
-function mapStateToProps (state) {
+const mapStateToProps = (state) => {
     const authData = state.authData;
     return {
         authData
     }
-}
+};
 
 export default connect(mapStateToProps)(Login);

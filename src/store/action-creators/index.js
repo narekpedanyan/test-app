@@ -43,4 +43,4 @@ export const togglePopUp = (payload) => ({
 export const updateTasks = (payload) => ({
     type: UPDATE_TASKS,
     payload
-})
+});

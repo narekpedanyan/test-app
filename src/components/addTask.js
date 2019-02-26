@@ -18,13 +18,10 @@ class AddTask extends Component {
             const url = 'https://uxcandy.com/~shapoval/test-task-backend/create?developer=Narek';
             const userName = localStorage.getItem('userName');
             const userEmail = localStorage.getItem('userEmail');
-
             const bodyFormData = new FormData();
-
             bodyFormData.set('username', userName);
             bodyFormData.set('email', userEmail);
             bodyFormData.set('text', this.state.taskText);
-
             const init = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json; charset=utf-8'},
@@ -38,7 +35,6 @@ class AddTask extends Component {
                     }
                 })
                 .then(data => {
-                    console.log(data.message, 'data');
                     this.setState({
                         createdSuccessFully: true
                     });
@@ -61,7 +57,7 @@ class AddTask extends Component {
                 <div className='add-task-popup'>
                     <span className='close-p-p' onClick={() => this.closePopUp()}>x</span>
                     <textarea className='textarea'
-                              onChange={(event) => this.setState({taskText: event.target.value})}></textarea>
+                              onChange={(event) => this.setState({taskText: event.target.value})}>Add Task here</textarea>
                     {this.state.createdSuccessFully && <div className='success'>Created Successfully</div>}
                     <button onClick={() => this.addTask()}>submit</button>
                 </div>
@@ -70,11 +66,11 @@ class AddTask extends Component {
     }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     const tasksData = state.tasksData;
     return {
         tasksData
     }
-}
+};
 
 export default connect(mapStateToProps)(AddTask);

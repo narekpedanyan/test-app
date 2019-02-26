@@ -20,7 +20,6 @@ class Tasks extends Component {
 
     render() {
         const {tasksInfo} = this.props.tasksData;
-
         return (<div className='tasks'>
             {tasksInfo && tasksInfo.tasks.map((item, index) => (<div className='task-row' key={index}>
                 {item.text}
@@ -29,12 +28,12 @@ class Tasks extends Component {
     }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     const tasksData = state.tasksData;
     return {
         tasksData
     }
-}
+};
 
 
 export default connect(mapStateToProps)(Tasks);

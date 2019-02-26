@@ -35,11 +35,11 @@ class GuestField extends Component{
     }
 }
 
-function mapStateToProps (state) {
+const mapStateToProps = (state) => {
     const appData = state.authData;
     return {
         appData
     }
-}
+};
 
 export default connect(mapStateToProps)(GuestField);
