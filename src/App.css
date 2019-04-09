@@ -196,3 +196,8 @@ a.underline-none:link {
 .pagination > span {
     cursor: pointer;
 }
+
+.chart-r{
+    width: 100%;
+    margin-top: 25px;
+}
